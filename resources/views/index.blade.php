@@ -13,6 +13,7 @@
                 <hr>
                 <form action="{{ route('auth.check') }}" method="POST">
                     @csrf
+                    {{ method_field('PUT') }}
                     <div class="results">
                         @if (Session::get('fail'))
                             <div class="alert alert-danger">
