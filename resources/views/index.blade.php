@@ -11,9 +11,8 @@
             <div class="col-md-4 offset-md-4">
                 <h4 class="text-center">Payroll Software</h4>
                 <hr>
-                <form action="{{ route('auth.check') }}" method="POST">
-                    @csrf
-                    {{-- {{ method_field('PUT') }} --}}
+                <form action="{{route('check')}}" method="POST">
+                    @{{ csrf_token() }}
                     <div class="results">
                         @if (Session::get('fail'))
                             <div class="alert alert-danger">

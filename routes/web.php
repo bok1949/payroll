@@ -18,7 +18,7 @@ use App\Http\Controllers\PagesController;
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/index', [PagesController::class, 'index'])->middleware('alreadyLoggedin');
 Route::get('/logout', [PagesController::class, 'logout'])->name('logout');
-Route::post('/check', [PagesController::class, 'check'])->name('auth.check');
+Route::post('/checkcred', [PagesController::class, 'check'])->name('check');
 
 
 Route::get('/dashboard', [PagesController::class, 'dashBoard'])->middleware('islogged')->name('dashboard');

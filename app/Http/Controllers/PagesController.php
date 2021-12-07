@@ -15,7 +15,6 @@ class PagesController extends Controller
 
     public function check(Request $request){
        
-        //validate inputs
         $request->validate([
             'username' => 'required',
             'password' => 'required|min:5|max:12'
@@ -25,9 +24,7 @@ class PagesController extends Controller
         if($user){
             if(Hash::check($request->password, $user->password)){
                 $request->session()->put('loggedUser', $user->id);
-                //dd('going to ladning page = '. $user->id);
                 return redirect('dashboard');
-                //return session('loggedUser');
             }else{
                 return back()->with('fail', 'Invalid Password');
             }
