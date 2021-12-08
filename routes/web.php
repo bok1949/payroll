@@ -1,12 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserDashboard;
 use App\Http\Controllers\PagesController;
 
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +30,9 @@ Route::post('/savesalesrepform', [UserDashboard::class, 'saveaddSalesrepForm'])-
 Route::get('/showallsalesrep', [UserDashboard::class, 'showAllSalesrep'])->middleware('islogged')->name('showallsalesrep');
 Route::get('/createpayroll', [UserDashboard::class, 'createPayroll'])->middleware('islogged')->name('createpayroll');
 Route::get('/createpayrollpdf', [UserDashboard::class, 'createPayrollPDF'])->middleware('islogged')->name('createpayrollpdf');
+
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
+//URL::forceScheme('https');
