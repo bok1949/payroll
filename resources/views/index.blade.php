@@ -12,7 +12,7 @@
                 <h4 class="text-center">Payroll Software</h4>
                 <hr>
                 <form action="{{route('check')}}" method="POST">
-                    @{{ csrf_token() }}
+                    @csrf
                     <div class="results">
                         @if (Session::get('fail'))
                             <div class="alert alert-danger">

@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserDashboard;
 use App\Http\Controllers\PagesController;
 
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
