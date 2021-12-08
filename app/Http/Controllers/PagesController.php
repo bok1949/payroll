@@ -24,7 +24,8 @@ class PagesController extends Controller
         if($user){
             if(Hash::check($request->password, $user->password)){
                 $request->session()->put('loggedUser', $user->id);
-                return redirect('dashboard');
+                /* return redirect('dashboard'); */
+                return redirect()->route('dashboard');
             }else{
                 return back()->with('fail', 'Invalid Password');
             }
