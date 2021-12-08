@@ -11,7 +11,7 @@
             <div class="col-md-4 offset-md-4">
                 <h4 class="text-center">Payroll Software</h4>
                 <hr>
-                <form action="{{route('check')}}" method="POST">
+                <form action="{{route('auth.check')}}" method="POST">
                     @csrf
                     <div class="results">
                         @if (Session::get('fail'))
