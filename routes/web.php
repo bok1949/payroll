@@ -33,7 +33,10 @@ Route::get('/createpayroll', [UserDashboard::class, 'createPayroll'])->middlewar
 Route::get('/createpayrollpdf', [UserDashboard::class, 'createPayrollPDF'])->middleware('islogged')->name('createpayrollpdf');
 
 
-if (App::environment('production')) {
+/* if (App::environment('production')) {
     URL::forceScheme('https');
+} */
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
 }
 //URL::forceScheme('https');
