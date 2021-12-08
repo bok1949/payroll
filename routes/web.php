@@ -22,7 +22,7 @@ if (App::environment('production')) {
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/index', [PagesController::class, 'index'])->middleware('alreadyLoggedin');
 Route::get('/logout', [PagesController::class, 'logout'])->name('logout');
-Route::post('/check', [PagesController::class, 'check'])->name('auth.check');
+Route::post('/authcheck', [PagesController::class, 'check'])->name('auth.check');
 
 
 Route::get('/dashboard', [PagesController::class, 'dashBoard'])->middleware('islogged')->name('dashboard');
