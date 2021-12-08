@@ -23,11 +23,27 @@ class CreatePayrollForm extends Component
     public $issue_charge;
     public $agency_release;
 
-    public $client_name;
+    public $client_namear=array();
+    public $client_name0;
+    public $client_name1;
+    public $client_name2;
+    public $client_name3;
+    public $client_name4;
+    public $client_name5;
+    public $client_name6;
+    public $client_name7;
+    public $client_name8;
+    public $client_name9;
+    public $client_name10;
+
+    protected $listeners = ['clientsName'];
+
     public $eliteinsure_commissions;
 
     public $validatedData;
     public $disabled = 'disabled';
+
+    
 
     protected $rules = [
         'salesrepname'      => 'required',
@@ -40,32 +56,59 @@ class CreatePayrollForm extends Component
         'lead_purchased'    => 'required',
         'issue_charge'      => 'required',
         'agency_release'    => 'required',
-        'client_name'       => 'required',
+        /* 'client_name'       => 'required', */
         'eliteinsure_commissions'       => 'required',
     ];
+    
     
     public function updated($propertyName)
     {
         
+        if($this->number_of_clients > 0){
+            unset($this->client_namear);
+            $this->client_namear=array();
+            for ($i=0; $i < $this->number_of_clients; $i++) { 
+                array_push($this->client_namear, 'client_name'.$i);
+                
+            }
+        }
+        
+        //dd($propertyName);
+
         $this->validateOnly($propertyName);
+		
         $salesrepSpecific = SalesRep::where('id', $this->salesrepname)->first();
         $this->eliteinsure_commissions=$salesrepSpecific->commission;
         $this->salesrepfullname=$salesrepSpecific->salesrep_name;
+        $this->bonuses=$salesrepSpecific->bonuses;
         $this->disabled = '';
     }
 
     public function savePayroll()
     {
+        
+        if (count($this->client_namear) > 0) {
+            foreach ($this->client_namear as $key => $value) {
+                $this->rules = array_merge($this->rules, [
+                    $value => 'required'
+                ]);
+            }
+        }
         $this->validatedData = $this->validate();
-
+        
         $datas = [
             'date'              => date('m/d/Y'),
             'commission'        => $this->eliteinsure_commissions,
             'bonuses'           => $this->bonuses,
             'salesrepname'      => $this->salesrepfullname,
+            'opening_balance'   => $this->opening_balance,
+            'agency_release'    => $this->agency_release,
+            'client_namear'     => $this->client_namear,
+            'dateperiod'        => $this->month.' '.$this->period.', '.$this->year,
         ];
            
         $pdf = PDF::loadView('testPDF', $datas)->output();
+        //dd($pdf);
         return response()->streamDownload(
             fn () => print($pdf),
             Carbon::now().".pdf"

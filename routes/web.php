@@ -19,6 +19,7 @@ use App\Http\Controllers\PagesController;
 |
 */
 
+
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/index', [PagesController::class, 'index'])->middleware('alreadyLoggedin');
 Route::get('/logout', [PagesController::class, 'logout'])->name('logout');
@@ -33,10 +34,7 @@ Route::get('/createpayroll', [UserDashboard::class, 'createPayroll'])->middlewar
 Route::get('/createpayrollpdf', [UserDashboard::class, 'createPayrollPDF'])->middleware('islogged')->name('createpayrollpdf');
 
 
-/* if (App::environment('production')) {
-    URL::forceScheme('https');
-} */
+
 if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
-//URL::forceScheme('https');

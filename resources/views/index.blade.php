@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <img src="{{asset('assets/ei-logo-1.png')}}" alt="" class="w-100 h-75">
+                <img src="{{asset('images/ei-logo-1.png')}}" alt="" class="w-100 h-75">
             </div>
         </div>
         <div class="row">

@@ -107,7 +107,7 @@
                 <label for="" class="col-sm-12 col-form-label">Bonuses</label> <br>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-dollar-sign"></i></span>
-                    <input type="number" wire:model="bonuses" min="0" class="form-control" value="{{old('bonuses')}}">
+                    <input type="number" wire:model="bonuses" min="0" readonly class="form-control" value="{{$bonuses}}">
                 </div>
                 @error('bonuses') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
@@ -126,7 +126,7 @@
                 <label for="" class="col-sm-12 col-form-label">Number of Clients</label> <br>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                    <input type="number" wire:model="number_of_clients" min="0" class="form-control" value="{{old('clients_num')}}">
+                    <input type="number" wire:model="number_of_clients" min="0" max="10" class="form-control" value="{{old('clients_num')}}">
                 </div>
                 @error('number_of_clients') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
@@ -134,17 +134,20 @@
         </div>
 
         @if ($number_of_clients != null)
-            <div class="row">
-                <div class="col-sm-6 offset-3">
-                    <label for="" class="col-sm-12 col-form-label">Client Name</label> <br>
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                        <input type="text" wire:model="client_name" class="form-control" value="{{old('clients_num')}}">
+            
+            @foreach ($client_namear as $item)
+                <div class="row">
+                    <div class="col-sm-6 offset-3">
+                        <label for="" class="col-sm-12 col-form-label">Client Name</label> <br>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                            <input type="text" wire:model.defer="{{$item}}" class="form-control" value="">
+                        </div>
+                        @error($item) <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    @error('client_name') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
-            </div>
-
+            @endforeach
+            
             <div class="row">
                 <div class="col-sm-2 offset-5">
                     <label for="" class="col-sm-12">Eliteinsure Commissions:</label> <br>
@@ -160,7 +163,6 @@
         <div class="row mt-2">
             <div class="col-sm-4 offset-4">
                 <button type="submit" class="btn btn-block btn-danger form-control" wire:loading.attr="disabled">Create Payroll </button>
-                {{-- <button type="submit" class="btn btn-block btn-danger form-control" {{$disabled}}>Create Payroll </button> --}}
             </div>
         </div>
 
