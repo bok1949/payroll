@@ -107,7 +107,7 @@ class CreatePayrollForm extends Component
             'dateperiod'        => $this->month.' '.$this->period.', '.$this->year,
         ];
            
-        $pdf = PDF::loadView('testPDF', $datas)->output();
+        $pdf = PDF::loadView('testPDF', $datas)->render();
         //dd($pdf);
         return response()->streamDownload(
             fn () => print($pdf),
