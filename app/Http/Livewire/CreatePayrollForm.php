@@ -119,7 +119,7 @@ class CreatePayrollForm extends Component
                 ]
             ])
         );
-        return response()->streamDownload(
+        return response()->stream(
             fn () => print($pdf),
             "file.pdf"
         );
