@@ -138,7 +138,7 @@
             @foreach ($client_namear as $item)
                 <div class="row">
                     <div class="col-sm-6 offset-3">
-                        <label for="" class="col-sm-12 col-form-label">Client Name {{$item}}</label> <br>
+                        <label for="" class="col-sm-12 col-form-label">Client Name </label> <br>
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                             <input type="text" wire:model.defer="{{$item}}" class="form-control" value="">
