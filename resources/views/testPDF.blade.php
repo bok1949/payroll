@@ -20,8 +20,8 @@
             font-weight: bold;
         }
         .logo-pdf {
-            height: 24px;
-            width: 24px;
+            height: 28px;
+            width: 84px;
         }
         header{
             text-align: center;
@@ -111,7 +111,7 @@
 <body>
     
    
-    <img src="../public/images/ei-logo-1.png" alt="" class="logo-pdf">
+    <img src="../public/images/ei-logo-v3.png" alt="" class="logo-pdf">
     <header>Buyer Created Tax Invoice</header>
 
     <div class="namepanel">
@@ -242,8 +242,8 @@
     </div>
 
 
-    <img src="../public/images/ei-logo-1.png" alt="" class="logo-pdf">
-    {{-- <img src="{{asset('images/ei-logo-1.png')}}" alt="" class="logo-pdf"> --}}
+    <img src="../public/images/ei-logo-v3.png" alt="" class="logo-pdf">
+    
     <header>Detail Commission Statement</header>
 
     <div class="namepanel">

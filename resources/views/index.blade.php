@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <img src="{{asset('images/ei-logo-1.png')}}" alt="" class="w-100 h-75">
+        <div class="row mt-3 mb-4">
+            <div class="col-md-4 offset-4">
+                <img src="{{asset('images/ei-logo-v3.png')}}" alt="" class="w-75 h-100">
             </div>
         </div>
         <div class="row">
