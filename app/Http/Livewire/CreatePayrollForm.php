@@ -107,21 +107,11 @@ class CreatePayrollForm extends Component
             'dateperiod'        => $this->month.' '.$this->period.', '.$this->year,
         ];
            
-        //$pdf = PDF::loadView('testPDF', $datas)->output();
-        $pdf = PDF::loadView('testPDF', $datas);
+        $pdf = PDF::loadView('testPDF', $datas)->output();
         //dd($pdf);
-        $pdf->getDomPDF()->setHttpContext(
-            stream_context_create([
-                'ssl' => [
-                    'allow_self_signed'=> TRUE,
-                    'verify_peer' => FALSE,
-                    'verify_peer_name' => FALSE,
-                ]
-            ])
-        )->output();
         return response()->streamDownload(
             fn () => print($pdf),
-            "file.pdf"
+            Carbon::now()."file.pdf"
         );
     }
 
