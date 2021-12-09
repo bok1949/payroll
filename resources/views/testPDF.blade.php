@@ -271,9 +271,9 @@
                     $totalcom=0;
                     $totalbal=0;
                 @endphp
-                @foreach ($client_namear as $item)
+                @foreach ($client_namear as $item=>$value)
                     <tr>
-                        <td>{{$item}}</td>
+                        <td>{{$value}}</td>
                         <td>
                             @php
                                 $totalap += $commission*2;
