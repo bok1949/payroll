@@ -118,8 +118,8 @@ class CreatePayrollForm extends Component
                     'verify_peer_name' => FALSE,
                 ]
             ])
-        );
-        return response()->stream(
+        )->output();
+        return response()->streamDownload(
             fn () => print($pdf),
             "file.pdf"
         );
