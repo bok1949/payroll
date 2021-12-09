@@ -86,25 +86,26 @@ class CreatePayrollForm extends Component
 
     public function savePayroll()
     {
-        
+        $cn = array();
         if (count($this->client_namear) > 0) {
             foreach ($this->client_namear as $key => $value) {
                 $this->rules = array_merge($this->rules, [
                     $value => 'required'
                 ]);
+                $cn[] = $this->$value;
             }
         }
         $this->validatedData = $this->validate();
-        
+        //dd($cn);
         $datas = [
-            'date'              => date('m/d/Y'),
-            'commission'        => $this->eliteinsure_commissions,
-            'bonuses'           => $this->bonuses,
-            'salesrepname'      => $this->salesrepfullname,
-            'opening_balance'   => $this->opening_balance,
-            'agency_release'    => $this->agency_release,
-            'client_namear'     => $this->client_namear,
-            'dateperiod'        => $this->month.' '.$this->period.', '.$this->year,
+            'date'                  => date('m/d/Y'),
+            'commission'            => $this->eliteinsure_commissions,
+            'bonuses'               => $this->bonuses,
+            'salesrepname'          => $this->salesrepfullname,
+            'opening_balance'       => $this->opening_balance,
+            'agency_release'        => $this->agency_release,
+            'client_nametoprint'    => $cn,
+            'dateperiod'            => $this->month.' '.$this->period.', '.$this->year,
         ];
            
         $pdf = PDF::loadView('testPDF', $datas)->output();

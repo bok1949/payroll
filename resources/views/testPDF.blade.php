@@ -271,7 +271,7 @@
                     $totalcom=0;
                     $totalbal=0;
                 @endphp
-                @foreach ($client_namear as $item=>$value)
+                @foreach ($client_nametoprint as $item=>$value)
                     <tr>
                         <td>{{$value}}</td>
                         <td>
