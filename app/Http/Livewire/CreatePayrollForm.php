@@ -76,11 +76,13 @@ class CreatePayrollForm extends Component
         //dd($propertyName);
 
         $this->validateOnly($propertyName);
-		
-        $salesrepSpecific = SalesRep::where('id', $this->salesrepname)->first();
-        $this->eliteinsure_commissions=$salesrepSpecific->commission;
-        $this->salesrepfullname=$salesrepSpecific->salesrep_name;
-        $this->bonuses=$salesrepSpecific->bonuses;
+		if($this->salesrepname !== null){
+            $salesrepSpecific = SalesRep::where('id', $this->salesrepname)->first();
+            $this->eliteinsure_commissions=$salesrepSpecific->commission;
+            $this->salesrepfullname=$salesrepSpecific->salesrep_name;
+            $this->bonuses=$salesrepSpecific->bonuses;
+        }
+        
         $this->disabled = '';
     }
 
